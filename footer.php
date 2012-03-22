@@ -3,13 +3,12 @@
 	  <hr>
 
 	  <footer>
-		<p>&copy; DeViNT 2002-2012</p>
+		<p>&copy; DeViNT 2003-2012</p>
 
 	  </footer>
 
 	</div>
 	
-	<script src="./javascripts/jquery.js"></script>
 	<script src="./javascripts/bootstrap-transition.js"></script>
 	<script src="./javascripts/bootstrap-alert.js"></script>
 	<script src="./javascripts/bootstrap-modal.js"></script>
@@ -20,7 +19,6 @@
 	<script src="./javascripts/bootstrap-popover.js"></script>
 	<script src="./javascripts/bootstrap-button.js"></script>
 	<script src="./javascripts/bootstrap-collapse.js"></script>
-	<script src="./javascripts/bootstrap-carousel.js"></script>
 	<script src="./javascripts/bootstrap-typeahead.js"></script>
 
   </body>

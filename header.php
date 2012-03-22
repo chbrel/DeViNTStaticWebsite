@@ -19,6 +19,9 @@
 	</style>
 	<link href="./stylesheets/bootstrap-responsive.css" rel="stylesheet">
 
+	<script src="./javascripts/jquery.js"></script>
+	<script src="./javascripts/bootstrap-carousel.js"></script>
+
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
 	  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
