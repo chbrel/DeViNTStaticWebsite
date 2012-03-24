@@ -3,13 +3,14 @@
 	$album = ""; if(isset($_GET['album'])) { $album = htmlspecialchars($_GET['album']); }
 	$ca = false;
 	$devint = false;
+	$selected = false;
 ?>
 		<div class="span3">
 		  <div class="well sidebar-nav">
 			<ul class="nav nav-list">
 			  <li class="nav-header">Visites à l'Institut Clément-Ader</li>
 			  	<?php foreach(getAllCADayAlbums() as $al) { ?>
-			  		<li <?php if(strcmp($album,$al) == 0) { echo 'class="active"'; $ca = true; } ?> ><a href="./index.php?action=photos&album=<?php echo $al; ?>"><?php echo substr($al, 0, -2); ?></a></li>
+			  		<li <?php if(strcmp($album,$al) == 0 || (strcmp($album,'') == 0 && ! $selected)) { echo 'class="active"'; $ca = true; if(! $selected) { $selected = true; $album = $al; } } ?> ><a href="./index.php?action=photos&album=<?php echo $al; ?>"><?php echo substr($al, 0, -2); ?></a></li>
 			  	<?php } ?>
 			  <li class="nav-header">Journées DeViNT</li>
 			  	<?php foreach(getAllDeViNTDayAlbums() as $al) { ?>
@@ -72,11 +73,11 @@
 	  			<div class="span12">
 		  			<ul class="thumbnails">
 		  				<?php
-		  					foreach($pictures as $pict)
+		  					foreach($pictures as $pos => $pict)
 					  		{
 					  	?>
 					        <li class="span2">
-					          <a href="#myCarousel" class="thumbnail" onclick="javascript: $('#myCarousel').carousel(<?php $p = split('[_.]', $pict); echo (intval($p[1]) - 1); ?>);">
+					          <a href="#myCarousel" class="thumbnail" onclick="javascript: $('#myCarousel').carousel(<?php echo $pos; ?>);">
 					            <img src="./images/photos/<?php echo $album.'/thumbnails/'.$pict ?>" alt="Miniature de la photo de l'album <?php echo $album; ?> ayant pour titre <?php echo $pict; ?>">
 					          </a>
 					        </li>

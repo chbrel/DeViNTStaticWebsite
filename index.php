@@ -14,8 +14,8 @@
 			case 'photos':
 				include_once('./pages/photos.php');
 				break;
-			case 'media':
-				include_once('./pages/media.php');
+			case 'videos':
+				include_once('./pages/videos.php');
 				break;
 			case 'about':
 				include_once('./pages/about.php');
