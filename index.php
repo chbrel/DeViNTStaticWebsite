@@ -20,6 +20,9 @@
 			case 'about':
 				include_once('./pages/about.php');
 				break;
+			case 'partliens':
+				include_once('./pages/partliens.php');
+				break;
 			case 'contact':
 				include_once('./pages/contact.php');
 				break;

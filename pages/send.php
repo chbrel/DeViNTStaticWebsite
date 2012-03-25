@@ -3,7 +3,7 @@ $failed = false;
 
 		if(isset($_POST['name']) && ! empty($_POST['name']))
 		{
-			$name = $_POST['name'];
+			$name = htmlspecialchars($_POST['name']);
 		}
 		else
 		{
@@ -12,7 +12,7 @@ $failed = false;
 		
 		if(isset($_POST['email']) && ! empty($_POST['email']))
 		{
-			$email = $_POST['email'];
+			$email = htmlspecialchars($_POST['email']);
 		}
 		else
 		{
@@ -21,7 +21,7 @@ $failed = false;
 		
 		if(isset($_POST['content']) && ! empty($_POST['content']))
 		{
-			$content = $_POST['content'];
+			$content = htmlspecialchars($_POST['content']);
 		}
 		else
 		{
@@ -30,7 +30,7 @@ $failed = false;
 		
 		if(isset($_POST['subject']) && ! empty($_POST['subject']))
 		{
-			$subject = $_POST['subject'];
+			$subject = htmlspecialchars($_POST['subject']);
 		}
 		else
 		{

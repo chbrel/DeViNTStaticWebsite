@@ -1,5 +1,8 @@
 		<div class="row-fluid"> 
         	<div class="page-header">
+        		<img src="./images/logo_uns.jpeg" style="height: 100px;" />
+        		<img src="./images/logo_polytech.jpeg" style="height: 80px;" />
+        		<img src="./images/logo_devint.gif" style="height: 70px;" />
     			<h1>Les projets DeViNT <small>Bienvenue!</small></h1>
   			</div>
   		</div>
