@@ -29,7 +29,7 @@ function getAllFiles($dirName, $regExp)
   $result = array();
   foreach($files as $f) {
     $filename = $dir . $f;
-    if (is_file($filename) && ereg($regExp,$f))
+    if (is_file($filename) && @ereg($regExp,$f))
       $result[] = $f;
   }
   return $result; 
