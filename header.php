@@ -50,6 +50,7 @@
 			  <li <?php if(strcmp($action,'projets') == 0) { echo 'class="active"'; } ?> ><a href="./index.php?action=projets">Quelques projets</a></li>
 			  <li <?php if(strcmp($action,'photos') == 0) { echo 'class="active"'; } ?> ><a href="./index.php?action=photos">Quelques photos</a></li>
 			  <li <?php if(strcmp($action,'videos') == 0) { echo 'class="active"'; } ?> ><a href="./index.php?action=videos">Quelques vidéos</a></li>
+			  <li <?php if(strcmp($action,'cddevint') == 0) { echo 'class="active"'; } ?> ><a href="./index.php?action=cddevint">Télécharger le CD DeViNT</a></li>
 			  <li <?php if(strcmp($action,'about') == 0) { echo 'class="active"'; } ?> ><a href="./index.php?action=about">En savoir +</a></li>
 			  <li <?php if(strcmp($action,'partliens') == 0) { echo 'class="active"'; } ?> ><a href="./index.php?action=partliens">Partenaires - Liens utiles</a></li>
 			  <li <?php if(strcmp($action,'contact') == 0) { echo 'class="active"'; } ?> ><a href="./index.php?action=contact">Contact</a></li>

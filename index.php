@@ -17,6 +17,9 @@
 			case 'videos':
 				include_once('./pages/videos.php');
 				break;
+			case 'cddevint':
+				include_once('./pages/cddevint.php');
+				break;
 			case 'about':
 				include_once('./pages/about.php');
 				break;
