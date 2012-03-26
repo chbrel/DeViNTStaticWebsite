@@ -1,5 +1,5 @@
 <?php
-$failed = false;
+		$failed = false;
 
 		if(isset($_POST['name']) && ! empty($_POST['name']))
 		{
@@ -40,15 +40,15 @@ $failed = false;
 		if(! $failed)
 		{
 			$to      = 'prdevint@polytech.unice.fr';
-			$subject = '[Formulaire de Contact] De: ' + $name + ' - Sujet: ' + $subject;
+			$subject = '[Formulaire de Contact] De: ' . $name . ' - Sujet: ' . $subject;
 				
-			$message = "Nom du contact: " + $name + "\r\n";
+			$message = "Nom du contact: " . $name . "\r\n";
 			$message .= "\r\n";
-			$message .= "Email du contact: " + $email + "\r\n";
+			$message .= "Email du contact: " . $email . "\r\n";
 			$message .= "\r\n";
-			$message .= "Sujet: " + $subject + "\r\n";
+			$message .= "Sujet: " . $subject . "\r\n";
 			$message .= "\r\n";
-			$message .= "Message: " + $content + "\r\n";
+			$message .= "Message: " . $content . "\r\n";
 			$message .= "\r\n";
 				
 			$headers = 'From: "Les Projets DeViNT"'."\n";
