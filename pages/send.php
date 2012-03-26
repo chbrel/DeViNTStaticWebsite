@@ -39,25 +39,40 @@
 
 		if(! $failed)
 		{
-			$to      = 'prdevint@polytech.unice.fr';
-			$subject = '[Formulaire de Contact] De: ' . $name . ' - Sujet: ' . $subject;
-				
-			$message = "Nom du contact: " . $name . "\r\n";
-			$message .= "\r\n";
-			$message .= "Email du contact: " . $email . "\r\n";
-			$message .= "\r\n";
-			$message .= "Sujet: " . $subject . "\r\n";
-			$message .= "\r\n";
-			$message .= "Message: " . $content . "\r\n";
-			$message .= "\r\n";
-				
-			$headers = 'From: "Les Projets DeViNT"'."\n";
-			$headers .='Reply-To: prdevint@polytech.unice.fr'."\n";  
-			$headers .= 'Content-Type: text/plain; charset="utf-8"'."\n";
+			require_once('./lib/recaptchalib.php');
+			$privatekey = "6Lflcc8SAAAAAK05fPmwkJ4e-m-TxqvVpaODdKeg";
+			$resp = recaptcha_check_answer ($privatekey,
+			                            $_SERVER["REMOTE_ADDR"],
+			                            $_POST["recaptcha_challenge_field"],
+			                            $_POST["recaptcha_response_field"]);
 			
-			if( ! mail($to, $subject, $message, $headers))
-			{
+			if (!$resp->is_valid) {
+				$error = $resp->error;
 				$failed = true;
+				
+				include_once('./pages/contact.php');
+				
+			} else {  
+				$to      = 'prdevint@polytech.unice.fr';
+				$subject = '[Formulaire de Contact] De: ' . $name . ' - Sujet: ' . $subject;
+					
+				$message = "Nom du contact: " . $name . "\r\n";
+				$message .= "\r\n";
+				$message .= "Email du contact: " . $email . "\r\n";
+				$message .= "\r\n";
+				$message .= "Sujet: " . $subject . "\r\n";
+				$message .= "\r\n";
+				$message .= "Message: " . $content . "\r\n";
+				$message .= "\r\n";
+					
+				$headers = 'From: "Les Projets DeViNT"'."\n";
+				$headers .='Reply-To: prdevint@polytech.unice.fr'."\n";  
+				$headers .= 'Content-Type: text/plain; charset="utf-8"'."\n";
+				
+				if( ! mail($to, $subject, $message, $headers))
+				{
+					$failed = true;
+				}
 			}
 		}
 ?>

@@ -1,3 +1,9 @@
+		<?php
+			if( ! isset($error) )
+			{
+				$error = null;
+			}
+		?>
 		<div class="row-fluid"> 
         	<div class="page-header">
     			<h1>Les projets DeViNT <small>Contactez nous!</small></h1>
@@ -14,7 +20,7 @@
 					    	<div class="add-on">
 					    		<i class="icon-user"></i>
 					    	</div>
-					    	<input type="text" name="name" class="input-large" id="name">
+					    	<input type="text" name="name" class="input-large" id="name" <?php if(isset($name)) { echo "value='$name'"; } ?>>
 					    </div>
 					  </div>
 					</div>
@@ -25,7 +31,7 @@
 					    	<div class="add-on">
 					    		<i class="icon-envelope"></i>
 					    	</div>
-					    	<input type="text" name="email" class="input-large" id="email">
+					    	<input type="text" name="email" class="input-large" id="email" <?php if(isset($email)) { echo "value='$email'"; } ?>>
 					    </div>
 					  </div>
 					</div>
@@ -36,14 +42,24 @@
 					    	<div class="add-on">
 					    		<i class="icon-book"></i>
 					    	</div>
-					    	<input type="text" name="subject" class="input-large" id="subject">
+					    	<input type="text" name="subject" class="input-large" id="subject" <?php if(isset($subject)) { echo "value='$subject'"; } ?>>
 					    </div>
 					  </div>
 					</div>
 					<div class="control-group">
 					  <label class="control-label" for="content">Votre Message</label>
 					  <div class="controls">
-					    <textarea class="input-xlarge" name="content" id="content" rows="10"></textarea>
+					    <textarea class="input-xlarge" name="content" id="content" rows="10"><?php if(isset($content)) { echo $content; } ?></textarea>
+					  </div>
+					</div>
+					<div class="control-group">
+					  <label class="control-label" for="content"></label>
+					  <div class="controls">
+					  <?php
+					  	require_once('./lib/recaptchalib.php');
+         	 			$publickey = "6Lflcc8SAAAAAOFf-GVpaxWmujCuc_bThCW1s3pH";
+          				echo recaptcha_get_html($publickey, $error);
+					  ?>
 					  </div>
 					</div>
 					<div class="form-actions">
