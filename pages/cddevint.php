@@ -3,6 +3,22 @@
     			<h1>CD DeViNT <small>Téléchargements</small></h1>
   			</div>
   		</div>
+  		
+  		<div class="row-fluid">
+  			<div class="span8 offset2">
+  				<p>
+  					Le CD DeViNT 2012 regroupe une sélection de projets créés à l'occasion des journées DeViNT 2004, 2005, ... et 2012.
+  					<br /><br />
+					Si vous téléchargez le CD DeVinT 2012 ci-dessous, vous devrez d'abord le décompresser.<br/>
+					Voir le livret du CD 2012 pour plus d'informations.<br />
+				</p>
+				<p>
+					<a href="./cddevint/2012/CDDeViNT2012.zip" class="btn btn-primary"><i class="icon-eye-open icon-white"></i> Cliquer ici pour télécharger le CD DeViNT 2012 (au format zip, moins de 400 Mo)</a>
+				</p>
+				<p><a href="./cddevint/2012/livretCDDeViNT2012.pdf" class="btn btn-info"><i class="icon-flag icon-white"></i> Cliquer ici pour télécharger le livret du CD 2012 au format pdf.</a>
+				</p>
+  			</div>
+		</div>
 
   		<div class="row-fluid">
   			<div class="span8 offset2">
@@ -16,9 +32,9 @@
 					Un raccourci est placé sur le bureau, qui permet de sélectionner le projet à exécuter dans la liste des projets installés. Un autre raccourci permet d'accéder à l'aide sur les projets. Voir également le livret du CD 2011 pour plus d'informations.<br />
 				</p>
 				<p>
-					<a href="./cddevint/CDDeViNT2011.zip" class="btn btn-primary"><i class="icon-eye-open icon-white"></i> Cliquer ici pour télécharger le CD DeViNT 2011 (au format zip, moins de 400 Mo)</a>
+					<a href="./cddevint/2011/CDDeViNT2011.zip" class="btn btn-primary"><i class="icon-eye-open icon-white"></i> Cliquer ici pour télécharger le CD DeViNT 2011 (au format zip, moins de 400 Mo)</a>
 				</p>
-				<p><a href="./cddevint/livretCDDeViNT2011.pdf" class="btn btn-info"><i class="icon-flag icon-white"></i> Cliquer ici pour télécharger le livret du CD 2011 au format pdf.</a>
+				<p><a href="./cddevint/2011/livretCDDeViNT2011.pdf" class="btn btn-info"><i class="icon-flag icon-white"></i> Cliquer ici pour télécharger le livret du CD 2011 au format pdf.</a>
 				</p>
   			</div>
 		</div>
