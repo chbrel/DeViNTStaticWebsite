@@ -1,8 +1,40 @@
 <?php
 	$projet = ""; if(isset($_GET['projet'])) { $projet = htmlspecialchars($_GET['projet']); }
-	if(strcmp($projet, '') == 0) { $projet = 'vocalyze'; }
 	
+	$tmpdir = './tmp/';
 	$dirname = './projects/';
+	
+	function testDownloadZip($project) {
+		global $tmpdir;
+		global $dirname;
+		if(!file_exists($dirname.$project.'/download/'.$project.'.zip')) {
+			$path=$dirname.$project;
+			$zip = new ZipArchive();
+			$zip->open($tmpdir.$project.'.zip', ZipArchive::CREATE);
+			if (false !== ($dir = opendir($path)))
+			{
+			    while (false !== ($file = readdir($dir)))
+			    {
+			        if ($file != '.' && $file != '..')
+			        {
+						$zip->addFile($path.DIRECTORY_SEPARATOR.$file);
+			        }
+			    }
+			}
+			else
+			{
+			    die('Can\'t read dir');
+			}
+			$zip->close();
+			
+			if(!file_exists($dirname.$project.'/download')) {
+				mkdir($dirname.$project.'/download');	
+			}
+			
+			rename($tmpdir.$project.'.zip',$dirname.$project.'/download/'.$project.'.zip');
+		}
+	}
+	
 	$dir = opendir($dirname);
 	
 	$projects = array();
@@ -10,11 +42,14 @@
 	while($file = readdir($dir)) {
 		if($file != '.' && $file != '..' && is_dir($dirname.$file))
 		{
+			testDownloadZip($file);
 			array_push($projects, $file);
 		}
 	}
 
 	closedir($dir);
+	
+	if(strcmp($projet, '') == 0) { $projet = $projects[0]; }
 	
 	function getProjectTitle($xmlFile) {
 		$infosXml = simplexml_load_file($xmlFile);
@@ -90,7 +125,7 @@
 				<div class="row-fluid">
 				 	<div class="span12">
 			  			<div class="alert alert-info">
-		  					<p><strong><?php $t = getProjectTitle($dirname.$p.'/doc/infos.xml'); if($t != null) { echo $t; } else { echo $p; } ?> <?php $y = getProjectYear($dirname.$p.'/doc/infos.xml'); if($y != null) { echo '('.$y.')'; } ?></strong></p>
+		  					<p><strong><?php $t = getProjectTitle($dirname.$p.'/doc/infos.xml'); if($t != null) { echo $t; } else { echo $p; } ?> <?php $y = getProjectYear($dirname.$p.'/doc/infos.xml'); if($y != null) { echo '('.$y.')'; } ?></strong></p><a class="btn btn-primary" href="<?php echo $dirname.$p.'/download/'.$p.'.zip'; ?>" >T&eacute;l&eacute;charger ce projet</a>
 						</div>
 			  		</div>
 				</div>
