@@ -3,28 +3,53 @@
 	
 	$tmpdir = './tmp/';
 	$dirname = './projects/';
+	$zipForce = false;
+	
+	function addToZip($zip, $path) {
+		
+		if (false !== ($dir = opendir($path)))
+		{
+		    while (false !== ($file = readdir($dir)))
+		    {
+		        if ($file != '.' && $file != '..' && $file != 'download')
+		        {
+					if(is_dir($path.DIRECTORY_SEPARATOR.$file)) {
+						addToZip($zip, $path.DIRECTORY_SEPARATOR.$file);
+					} else {
+						$zip->addFile($path.DIRECTORY_SEPARATOR.$file);
+					}
+		        }
+		    }
+		}
+		else
+		{
+		    die('Can\'t read dir');
+		}	
+	}
 	
 	function testDownloadZip($project) {
 		global $tmpdir;
 		global $dirname;
-		if(!file_exists($dirname.$project.'/download/'.$project.'.zip')) {
-			$path=$dirname.$project;
+		global $zipForce;
+		if($zipForce || !file_exists($dirname.$project.'/download/'.$project.'.zip')) {
+			if($zipForce && file_exists($dirname.$project.'/download/'.$project.'.zip')) {
+				$unlinkZip = unlink($dirname.$project.'/download/'.$project.'.zip');
+				if(!$unlinkZip) {
+					var_dump("Pb de suppression du zip: " . $dirname.$project.'/download/'.$project.'.zip');
+				}
+			}
+			
+			$path=$project;
 			$zip = new ZipArchive();
 			$zip->open($tmpdir.$project.'.zip', ZipArchive::CREATE);
-			if (false !== ($dir = opendir($path)))
-			{
-			    while (false !== ($file = readdir($dir)))
-			    {
-			        if ($file != '.' && $file != '..')
-			        {
-						$zip->addFile($path.DIRECTORY_SEPARATOR.$file);
-			        }
-			    }
-			}
-			else
-			{
-			    die('Can\'t read dir');
-			}
+			
+			$currentWorkingPath = getcwd();
+			chdir($dirname);
+			
+			addToZip($zip, $path);
+			
+			chdir($currentWorkingPath);
+			
 			$zip->close();
 			
 			if(!file_exists($dirname.$project.'/download')) {
@@ -48,6 +73,8 @@
 	}
 
 	closedir($dir);
+	
+	sort($projects);
 	
 	if(strcmp($projet, '') == 0) { $projet = $projects[0]; }
 	
